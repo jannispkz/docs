@@ -5,9 +5,29 @@ description: "Make your first Pikzels API call in under 5 minutes"
 
 ## Get Started with Pikzels API
 
-This guide will walk you through making your first API call to generate an AI-powered thumbnail.
+This guide will walk you through setting up and making your first API call to generate an AI-powered thumbnail.
 
-### Prerequisites
+## Base URL
+
+All API requests should be made to:
+
+```
+https://api.pikzels.com
+```
+
+## Authentication
+
+All API endpoints require an API key in the `X-Api-Key` header:
+
+```bash
+curl -H "X-Api-Key: pkz_your_api_key_here" https://api.pikzels.com/v1/thumbnail
+```
+
+<Warning>
+Keep your API key secure - never expose it in client-side code or commit to version control.
+</Warning>
+
+## Prerequisites
 
 Before you begin, you'll need:
 - A Pikzels API key (starts with `pkz_`)
@@ -138,6 +158,18 @@ Let's break down what each parameter does:
   - `pkz-2` - Go-to model: Most versatile and consistent for realistic images, photorealism, and detailed content
   - `pkz-3` - Most advanced model: Our most powerful & capable, preferred choice for highest quality results
 </ParamField>
+
+## HTTP Status Codes
+
+All endpoints use standard HTTP status codes:
+
+- `200` - Success
+- `400` - Bad Request: Invalid or missing fields
+- `401` - Unauthorized: Invalid authentication
+- `402` - Payment Required: Insufficient balance
+- `429` - Too Many Requests: Rate limit exceeded
+- `500` - Internal Server Error
+- `503` - Service Unavailable: Maintenance mode
 
 ## Error Handling
 
