@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "almond",
   "name": "Pikzels API Documentation",
   "colors": {
     "primary": "#2cfbcd",
     "light": "#5ffdd9",
-    "dark": "#00d4a4"
+    "dark": "#1C1C1C"
   },
   "openapi": "/openapi.yaml",
   "favicon": "/favicon.svg",
