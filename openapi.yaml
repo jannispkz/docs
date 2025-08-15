@@ -35,7 +35,7 @@ paths:
                 format:
                   type: string
                   description: Aspect ratio format for the thumbnail
-                  enum: ["16:9", "9:16", "1:1", "4:3", "3:4"]
+                  enum: ["16:9", "9:16", "1:1"]
                   example: "16:9"
                 model:
                   type: string

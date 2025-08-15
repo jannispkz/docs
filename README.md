@@ -69,14 +69,12 @@ Get your API key from the [Pikzels Dashboard](https://google.com).
 - **16:9** - Landscape (YouTube thumbnails)
 - **9:16** - Portrait (Instagram Stories)
 - **1:1** - Square (Instagram posts)
-- **4:3** - Classic landscape
-- **3:4** - Classic portrait
 
 ## 🤖 Available Models
 
-- **pkz-1** - Fast generation, good quality
-- **pkz-2** - Balanced speed and quality (recommended)
-- **pkz-3** - Highest quality, slower generation
+- **pkz-1** - Legacy model for gaming content (Roblox, Fortnite, Minecraft, etc.)
+- **pkz-2** - Go-to model for realistic images and detailed content
+- **pkz-3** - Most advanced model, preferred choice for highest quality
 
 ## 💬 Community & Support
 
