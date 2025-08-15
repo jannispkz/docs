@@ -1,0 +1,395 @@
+openapi: 3.1.0
+info:
+  title: Pikzels API
+  version: 3.1.0
+  description: REST API for Pikzels image generation and manipulation services
+  contact:
+    name: Pikzels Support
+    url: https://pikzels.com
+servers:
+  - url: https://api.pikzels.com
+    description: Production server
+paths:
+  /v1/thumbnail:
+    post:
+      summary: Generate Thumbnail
+      description: Create a new thumbnail image based on a text prompt
+      operationId: createThumbnail
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - prompt
+                - format
+                - model
+              properties:
+                prompt:
+                  type: string
+                  description: Text prompt describing the desired thumbnail
+                  example: "cat"
+                format:
+                  type: string
+                  description: Aspect ratio format for the thumbnail
+                  enum: ["16:9", "9:16", "1:1", "4:3", "3:4"]
+                  example: "16:9"
+                model:
+                  type: string
+                  description: AI model to use for generation
+                  enum: ["pkz-1", "pkz-2", "pkz-3"]
+                  example: "pkz-2"
+      responses:
+        '200':
+          description: Successful thumbnail generation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  output:
+                    type: string
+                    format: uri
+                    description: URL of the generated thumbnail
+                    example: "https://media.pikzels.com/temp/pikzels_1234567890.jpeg"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientBalance'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /v1/edit:
+    post:
+      summary: Edit Image
+      description: Edit an existing image using AI-powered modifications
+      operationId: editImage
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - prompt
+                - image_url
+              properties:
+                prompt:
+                  type: string
+                  description: Instructions for how to edit the image
+                  example: "make the cat blue"
+                image_url:
+                  type: string
+                  format: uri
+                  description: URL of the source image to edit
+                  example: "https://example.com/cat.jpg"
+                mask_url:
+                  type: string
+                  format: uri
+                  description: Optional mask URL for selective editing
+      responses:
+        '200':
+          description: Successful image edit
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  output:
+                    type: string
+                    format: uri
+                    description: URL of the edited image
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientBalance'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /v1/recreate:
+    post:
+      summary: Recreate Image
+      description: Recreate an image with AI enhancement and modifications
+      operationId: recreateImage
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - image_url
+                - model
+              properties:
+                image_url:
+                  type: string
+                  format: uri
+                  description: URL of the source image to recreate
+                  example: "https://example.com/original.jpg"
+                model:
+                  type: string
+                  description: AI model to use for recreation
+                  enum: ["pkz-2", "pkz-3"]
+                  example: "pkz-2"
+                image_weight:
+                  type: string
+                  description: How closely to follow the original image
+                  enum: ["low", "medium", "high"]
+                  default: "medium"
+                  example: "medium"
+                prompt:
+                  type: string
+                  description: Optional prompt to guide the recreation
+      responses:
+        '200':
+          description: Successful image recreation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  output:
+                    type: string
+                    format: uri
+                    description: URL of the recreated image
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientBalance'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /v1/faceswap:
+    post:
+      summary: Face Swap
+      description: Swap faces between images using AI
+      operationId: faceSwap
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - image_url
+                - face_url
+              properties:
+                image_url:
+                  type: string
+                  format: uri
+                  description: URL of the target image where face will be placed
+                  example: "https://example.com/target.jpg"
+                face_url:
+                  type: string
+                  format: uri
+                  description: URL of the source face image
+                  example: "https://example.com/face.jpg"
+      responses:
+        '200':
+          description: Successful face swap
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  output:
+                    type: string
+                    format: uri
+                    description: URL of the image with swapped face
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientBalance'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /v1/title:
+    post:
+      summary: Generate Title
+      description: Generate creative titles or text content
+      operationId: generateTitle
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - prompt
+              properties:
+                prompt:
+                  type: string
+                  description: Text prompt for title generation
+                  example: "top 10 cat breeds"
+      responses:
+        '200':
+          description: Successful title generation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  output:
+                    type: string
+                    description: Generated title or text content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientBalance'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: API key must be a valid 52-character Pikzels API key starting with 'pkz_'
+
+  schemas:
+    Error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+              description: Error code identifier
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: string
+              description: Additional error details
+
+  responses:
+    BadRequest:
+      description: Bad Request - Invalid or missing fields
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "BAD_REQUEST"
+              message: "Invalid or Missing Fields"
+              details: "One or more required fields are missing or contain invalid values. Please check your request and refer to the Pikzels API documentation for the correct format."
+
+    Unauthorized:
+      description: Unauthorized - Invalid authentication
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "INVALID_AUTH_HEADER"
+              message: "Invalid Authorization Header"
+              details: "Authentication credentials are missing or invalid"
+
+    InsufficientBalance:
+      description: Payment Required - Insufficient balance
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "INSUFFICIENT_BALANCE"
+              message: "Not Enough Balance"
+              details: "Your account does not have enough balance to complete this request. Please add funds or enable auto top-up to prevent running out of credits in the future."
+
+    TooManyRequests:
+      description: Too Many Requests - Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "CONCURRENT_LIMIT_EXCEEDED"
+              message: "Concurrent Request Limit Reached"
+              details: "Maximum of 10 concurrent requests allowed. Please wait for existing requests to complete"
+
+    InternalError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "INTERNAL_ERROR"
+              message: "Internal Server Error"
+              details: "An unexpected error occurred on the server. Please try again later."
+
+    ServiceUnavailable:
+      description: Service Unavailable - Maintenance mode
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "MAINTENANCE_ACTIVE"
+              message: "Service Under Maintenance"
+              details: "The service is temporarily unavailable due to scheduled maintenance. Please try again later."
+
+security:
+  - ApiKeyAuth: []
+
+tags:
+  - name: Image Generation
+    description: Endpoints for generating new images
+  - name: Image Manipulation
+    description: Endpoints for editing and modifying existing images
+  - name: Text Generation
+    description: Endpoints for generating text content
