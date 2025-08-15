@@ -58,18 +58,18 @@
             ]
           },
           {
-            "group": "Images",
+            "group": "Thumbnails",
             "pages": [
-              "api-reference/endpoint/thumbnail",
-              "api-reference/endpoint/edit",
+              "api-reference/endpoint/create",
               "api-reference/endpoint/recreate",
+              "api-reference/endpoint/edit",
               "api-reference/endpoint/faceswap"
             ]
           },
           {
-            "group": "Text Generation",
+            "group": "Titles",
             "pages": [
-              "api-reference/endpoint/title"
+              "api-reference/endpoint/create-title"
             ]
           }
         ]
