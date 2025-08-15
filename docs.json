@@ -1,12 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Pikzels API Documentation",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
     "dark": "#15803D"
   },
+  "openapi": "/openapi.yaml",
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
@@ -51,18 +52,29 @@
         "tab": "API reference",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Getting Started",
             "pages": [
               "api-reference/introduction"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Image Generation",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/endpoint/thumbnail"
+            ]
+          },
+          {
+            "group": "Image Manipulation",
+            "pages": [
+              "api-reference/endpoint/edit",
+              "api-reference/endpoint/recreate",
+              "api-reference/endpoint/faceswap"
+            ]
+          },
+          {
+            "group": "Text Generation",
+            "pages": [
+              "api-reference/endpoint/title"
             ]
           }
         ]

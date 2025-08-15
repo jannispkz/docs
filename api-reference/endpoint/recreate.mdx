@@ -1,0 +1,42 @@
+---
+title: "Recreate Image"
+api: "POST https://api.pikzels.com/v1/recreate"
+description: "Recreate an image with AI enhancement and modifications"
+---
+
+<ParamField body="image_url" type="string" required>
+  URL of the source image to recreate
+</ParamField>
+
+<ParamField body="model" type="string" required>
+  AI model to use for recreation. Options: `pkz-2`, `pkz-3`
+</ParamField>
+
+<ParamField body="image_weight" type="string" default="medium">
+  How closely to follow the original image. Options: `low`, `medium`, `high`
+</ParamField>
+
+<ParamField body="prompt" type="string">
+  Optional prompt to guide the recreation
+</ParamField>
+
+<RequestExample>
+```bash Example Request
+curl --location --request POST 'https://api.pikzels.com/v1/recreate' \
+--header 'X-Api-Key: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "image_url": "https://example.com/original.jpg",
+  "model": "pkz-2",
+  "image_weight": "medium"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "output": "https://media.pikzels.com/temp/recreated_1234567890.jpeg"
+}
+```
+</ResponseExample>

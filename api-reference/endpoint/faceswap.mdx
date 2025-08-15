@@ -1,0 +1,33 @@
+---
+title: "Face Swap"
+api: "POST https://api.pikzels.com/v1/faceswap"
+description: "Swap faces between images using AI"
+---
+
+<ParamField body="image_url" type="string" required>
+  URL of the target image where face will be placed
+</ParamField>
+
+<ParamField body="face_url" type="string" required>
+  URL of the source face image
+</ParamField>
+
+<RequestExample>
+```bash Example Request
+curl --location --request POST 'https://api.pikzels.com/v1/faceswap' \
+--header 'X-Api-Key: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "image_url": "https://example.com/target.jpg",
+  "face_url": "https://example.com/face.jpg"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "output": "https://media.pikzels.com/temp/faceswap_1234567890.jpeg"
+}
+```
+</ResponseExample>

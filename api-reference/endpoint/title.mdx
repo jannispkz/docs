@@ -1,0 +1,28 @@
+---
+title: "Generate Title"
+api: "POST https://api.pikzels.com/v1/title"
+description: "Generate creative titles or text content"
+---
+
+<ParamField body="prompt" type="string" required>
+  Text prompt for title generation
+</ParamField>
+
+<RequestExample>
+```bash Example Request
+curl --location --request POST 'https://api.pikzels.com/v1/title' \
+--header 'X-Api-Key: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "prompt": "top 10 cat breeds"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "output": "Top 10 Most Popular Cat Breeds in 2024"
+}
+```
+</ResponseExample>

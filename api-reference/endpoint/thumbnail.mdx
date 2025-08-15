@@ -1,0 +1,38 @@
+---
+title: "Generate Thumbnail"
+api: "POST https://api.pikzels.com/v1/thumbnail"
+description: "Create a new thumbnail image based on a text prompt"
+---
+
+<ParamField body="prompt" type="string" required>
+  Text prompt describing the desired thumbnail
+</ParamField>
+
+<ParamField body="format" type="string" required>
+  Aspect ratio format for the thumbnail. Options: `16:9`, `9:16`, `1:1`, `4:3`, `3:4`
+</ParamField>
+
+<ParamField body="model" type="string" required>
+  AI model to use for generation. Options: `pkz-1`, `pkz-2`, `pkz-3`
+</ParamField>
+
+<RequestExample>
+```bash Example Request
+curl --location --request POST 'https://api.pikzels.com/v1/thumbnail' \
+--header 'X-Api-Key: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "prompt": "cat",
+  "format": "16:9",
+  "model": "pkz-2"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "output": "https://media.pikzels.com/temp/pikzels_1234567890.jpeg"
+}
+```
+</ResponseExample>

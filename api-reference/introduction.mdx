@@ -1,33 +1,62 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'Pikzels API'
+description: 'REST API for image generation and manipulation services'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Base URL
 
-## Welcome
+All API requests should be made to:
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+```
+https://api.pikzels.com
+```
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API endpoints require authentication using an API key. Include your API key in the request headers:
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+```bash
+X-Api-Key: YOUR_API_KEY
 ```
+
+Your API key should be a valid 52-character Pikzels API key starting with `pkz_`.
+
+<Warning>
+  Keep your API key secure and never share it publicly. Do not commit it to version control.
+</Warning>
+
+## Rate Limits
+
+- Maximum of 10 concurrent requests per API key
+- Requests exceeding this limit will receive a 429 error
+
+## Response Format
+
+All endpoints return JSON responses with the following structure:
+
+### Success Response
+```json
+{
+  "output": "https://media.pikzels.com/..."
+}
+```
+
+### Error Response
+```json
+{
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human-readable error message",
+    "details": "Additional error details"
+  }
+}
+```
+
+## Common Error Codes
+
+- `400` - Bad Request: Invalid or missing fields
+- `401` - Unauthorized: Invalid authentication
+- `402` - Payment Required: Insufficient balance
+- `429` - Too Many Requests: Rate limit exceeded
+- `500` - Internal Server Error
+- `503` - Service Unavailable: Maintenance mode
