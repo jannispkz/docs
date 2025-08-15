@@ -43,6 +43,11 @@
     "global": {
       "anchors": [
         {
+          "anchor": "Home",
+          "href": "https://docs.pikzels.com",
+          "icon": "house"
+        },
+        {
           "anchor": "Community",
           "href": "https://go.pikzels.com/discord",
           "icon": "discord"
