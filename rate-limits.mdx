@@ -26,17 +26,17 @@ Unlike traditional rate limits based on requests per minute, Pikzels uses a conc
 ### Example Scenario
 
 ```
-Start: Send 10 requests
-       → All accepted ✓
+Step 1: Send 10 requests
+        → All 10 accepted ✓ (all slots occupied)
 
-After 15s: Request #1 completes
-           → Can send 1 more
+Step 2: Request #1 completes
+        → 1 slot opens, can send 1 more
 
-After 20s: Requests #2-4 complete
-           → Can send 3 more
+Step 3: Requests #2-4 complete
+        → 3 slots open, can send 3 more
 
-After 25s: Send 4 requests
-           → 3 accepted, 1 rejected (at limit)
+Step 4: Try to send 4 requests
+        → 3 accepted, 1 rejected (at 10-slot limit)
 ```
 
 ## Handling Rate Limits
