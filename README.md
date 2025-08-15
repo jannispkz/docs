@@ -46,13 +46,7 @@ View your local documentation at `http://localhost:3000`
 
 ## 🔑 Authentication
 
-All API endpoints require authentication using an API key:
-
-```
-X-Api-Key: pkz_your_api_key_here
-```
-
-Get your API key from the [Pikzels Dashboard](https://google.com).
+All API endpoints require an API key. Get yours from the [Pikzels Dashboard](https://google.com).
 
 ## 📊 API Endpoints
 
@@ -66,15 +60,11 @@ Get your API key from the [Pikzels Dashboard](https://google.com).
 
 ## 🎨 Supported Formats
 
-- **16:9** - Landscape (YouTube thumbnails)
-- **9:16** - Portrait (Instagram Stories)
-- **1:1** - Square (Instagram posts)
+16:9, 9:16, and 1:1 aspect ratios
 
 ## 🤖 Available Models
 
-- **pkz-1** - Legacy model for gaming content (Roblox, Fortnite, Minecraft, etc.)
-- **pkz-2** - Go-to model for realistic images and detailed content
-- **pkz-3** - Most advanced model, preferred choice for highest quality
+Three AI models: **pkz-1** (gaming), **pkz-2** (realistic), **pkz-3** (advanced)
 
 ## 💬 Community & Support
 

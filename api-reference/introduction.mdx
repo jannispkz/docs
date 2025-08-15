@@ -13,22 +13,7 @@ https://api.pikzels.com
 
 ## Authentication
 
-All API endpoints require authentication using an API key. Include your API key in the request headers:
-
-```bash
-X-Api-Key: YOUR_API_KEY
-```
-
-Your API key should be a valid Pikzels API key starting with `pkz_`.
-
-<Warning>
-  Keep your API key secure and never share it publicly. Do not commit it to version control.
-</Warning>
-
-## Rate Limits
-
-- Maximum of 10 concurrent requests per API key
-- Requests exceeding this limit will receive a 429 error
+All API endpoints require authentication using an API key in the `X-Api-Key` header. See our [Authentication guide](/authentication) for detailed setup instructions.
 
 ## Response Format
 
@@ -40,10 +25,6 @@ All endpoints return JSON responses with the following structure:
   "output": "https://media.pikzels.com/..."
 }
 ```
-
-<Note>
-  Generated images are temporary and available for approximately 24 hours. Download and host them yourself for permanent storage.
-</Note>
 
 ### Error Response
 ```json
