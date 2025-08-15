@@ -19,7 +19,6 @@
             "pages": [
               "api-reference/introduction",
               "quickstart",
-              "authentication",
               "rate-limits"
             ]
           },
