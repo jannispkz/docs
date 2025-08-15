@@ -8,7 +8,9 @@ description: "Understanding and working with API rate limits"
 The Pikzels API implements rate limiting to ensure fair usage and maintain service quality for all users.
 
 <Info>
-  **Current Limit:** Maximum of **10 concurrent requests** per API key
+  **Default Limit:** Maximum of **10 concurrent requests** per API key
+  
+  **Enterprise:** Higher limits available upon request - [contact us](mailto:support@pikzels.com)
 </Info>
 
 ## How Rate Limiting Works
@@ -363,16 +365,43 @@ results = await client.generate_thumbnails(prompts)
 
 ## Need Higher Limits?
 
-If you consistently need more than 10 concurrent requests:
+The default 10 concurrent request limit can be increased for enterprise customers based on your specific needs.
 
-- Contact [support@pikzels.com](mailto:support@pikzels.com)
-- Describe your use case and expected volume
-- Ask about enterprise plans with custom limits
+### How to Get Higher Limits
 
-<Card
-  title="Enterprise Solutions"
-  icon="building"
-  href="mailto:support@pikzels.com"
->
-  Get custom rate limits, dedicated support, and SLA guarantees
-</Card>
+1. **Contact our team** at [support@pikzels.com](mailto:support@pikzels.com)
+2. **Provide details about:**
+   - Your use case and application
+   - Expected request volume
+   - Peak concurrent requests needed
+   - Current API usage patterns
+3. **We'll work with you to:**
+   - Determine appropriate limits for your needs
+   - Set up enterprise pricing
+   - Provide dedicated support
+
+<CardGroup cols={2}>
+  <Card
+    title="Enterprise Solutions"
+    icon="building"
+    href="mailto:support@pikzels.com"
+  >
+    Custom rate limits tailored to your requirements
+  </Card>
+  <Card
+    title="Dedicated Support"
+    icon="headset"
+    href="mailto:support@pikzels.com"
+  >
+    Priority support and SLA guarantees
+  </Card>
+</CardGroup>
+
+### Enterprise Benefits
+
+- **Custom concurrent request limits** - 50, 100, or more based on your needs
+- **Priority queue access** - Your requests get processed first
+- **Dedicated infrastructure** - Optional dedicated processing resources
+- **SLA guarantees** - Uptime and response time commitments
+- **Direct support channel** - Slack or dedicated support contact
+- **Volume discounts** - Better pricing for high-volume usage
