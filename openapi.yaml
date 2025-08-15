@@ -286,7 +286,7 @@ components:
       type: apiKey
       in: header
       name: X-Api-Key
-      description: API key must be a valid 52-character Pikzels API key starting with 'pkz_'
+      description: API key must be a valid Pikzels API key starting with 'pkz_'
 
   schemas:
     Error:
