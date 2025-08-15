@@ -64,8 +64,8 @@
     ],
     "primary": {
       "type": "button",
-      "label": "REPLACE URL DASHBOARD",
-      "href": "https://google.com"
+      "label": "Dashboard",
+      "href": "https://app.pikzels.com/platform"
     }
   },
   "contextual": {

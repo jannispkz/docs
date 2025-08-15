@@ -46,7 +46,7 @@ View your local documentation at `http://localhost:3000`
 
 ## 🔑 Authentication
 
-All API endpoints require an API key. Get yours from the [Pikzels Dashboard](https://google.com).
+All API endpoints require an API key. Get yours from the [Pikzels Dashboard](https://app.pikzels.com/platform).
 
 ## 📊 API Endpoints
 
