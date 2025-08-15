@@ -26,30 +26,11 @@ curl -H "X-Api-Key: pkz_your_api_key_here" https://api.pikzels.com/v1/thumbnail
 
 **Security:** Keep your API key secure - never expose it in client-side code or commit to version control.
 
-## Response Format
+## Error Codes
 
-All endpoints return JSON responses with the following structure:
+All endpoints use standard HTTP status codes:
 
-### Success Response
-```json
-{
-  "output": "https://media.pikzels.com/..."
-}
-```
-
-### Error Response
-```json
-{
-  "error": {
-    "code": "ERROR_CODE",
-    "message": "Human-readable error message",
-    "details": "Additional error details"
-  }
-}
-```
-
-## Common Error Codes
-
+- `200` - Success
 - `400` - Bad Request: Invalid or missing fields
 - `401` - Unauthorized: Invalid authentication
 - `402` - Payment Required: Insufficient balance
