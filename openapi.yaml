@@ -158,7 +158,7 @@ paths:
                   example: "medium"
                 prompt:
                   type: string
-                  description: Optional prompt to guide the recreation
+                  description: Optional prompt to guide the recreation. Changes work best on pkz-3
       responses:
         '200':
           description: Successful image recreation
