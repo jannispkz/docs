@@ -58,14 +58,9 @@
             ]
           },
           {
-            "group": "Image Generation",
+            "group": "Images",
             "pages": [
-              "api-reference/endpoint/thumbnail"
-            ]
-          },
-          {
-            "group": "Image Manipulation",
-            "pages": [
+              "api-reference/endpoint/thumbnail",
               "api-reference/endpoint/edit",
               "api-reference/endpoint/recreate",
               "api-reference/endpoint/faceswap"
