@@ -18,7 +18,7 @@ https://api.pikzels.com
 ## Get Your API Key
 
 <Steps>
-  <Step title="Get Your API Key">
+  <Step title="Sign Up">
     Sign up for a Pikzels account to receive your API key at [Pikzels Dashboard](https://app.pikzels.com/platform)
   </Step>
   <Step title="Make Your First Call">
@@ -31,7 +31,7 @@ https://api.pikzels.com
 
 ## Authentication
 
-All API endpoints require an API key in the `X-Api-Key` header:
+All API endpoints require an API key (starts with `pkz_`) in the `X-Api-Key` header:
 
 ```bash
 curl -H "X-Api-Key: pkz_your_api_key_here" https://api.pikzels.com/v1/thumbnail
@@ -40,16 +40,6 @@ curl -H "X-Api-Key: pkz_your_api_key_here" https://api.pikzels.com/v1/thumbnail
 <Warning>
 Keep your API key secure - never expose it in client-side code or commit to version control.
 </Warning>
-
-## Prerequisites
-
-Before you begin, you'll need:
-- A Pikzels API key (starts with `pkz_`)
-- A tool to make HTTP requests (curl, Postman, or your favorite programming language)
-
-<Note>
-  Don't have an API key yet? Sign up at [Pikzels Dashboard](https://app.pikzels.com/platform) to get started.
-</Note>
 
 ## Your First API Call
 
