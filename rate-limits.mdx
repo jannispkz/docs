@@ -29,14 +29,14 @@ Unlike traditional rate limits based on requests per minute, Pikzels uses a conc
 Start: Send 10 requests
        → All accepted ✓
 
-After 1s: Request #1 completes
-          → Can send 1 more
+After 15s: Request #1 completes
+           → Can send 1 more
 
-After 2s: Requests #2-4 complete
-          → Can send 3 more
+After 20s: Requests #2-4 complete
+           → Can send 3 more
 
-After 3s: Send 4 requests
-          → 3 accepted, 1 rejected (at limit)
+After 25s: Send 4 requests
+           → 3 accepted, 1 rejected (at limit)
 ```
 
 ## Handling Rate Limits
