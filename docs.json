@@ -17,6 +17,7 @@
           {
             "group": "Getting Started",
             "pages": [
+              "index",
               "api-reference/introduction",
               "quickstart",
               "rate-limits"
@@ -42,11 +43,6 @@
     ],
     "global": {
       "anchors": [
-        {
-          "anchor": "Home",
-          "href": "https://docs.pikzels.com",
-          "icon": "house"
-        },
         {
           "anchor": "Community",
           "href": "https://go.pikzels.com/discord",
