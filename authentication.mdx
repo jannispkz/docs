@@ -1,0 +1,218 @@
+---
+title: "Authentication"
+description: "How to authenticate with the Pikzels API"
+---
+
+## API Key Authentication
+
+The Pikzels API uses API key authentication. All requests must include your API key in the request headers.
+
+### Getting Your API Key
+
+1. Sign up for a Pikzels account at [dashboard.pikzels.com](https://google.com)
+2. Navigate to the API Keys section
+3. Generate a new API key
+4. Copy your key - it starts with `pkz_`
+
+<Warning>
+  Store your API key securely. Never commit it to version control or expose it in client-side code.
+</Warning>
+
+## Making Authenticated Requests
+
+Include your API key in the `X-Api-Key` header of every request:
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST https://api.pikzels.com/v1/thumbnail \
+  -H "X-Api-Key: pkz_your_api_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "mountain landscape", "format": "16:9", "model": "pkz-2"}'
+```
+
+```python Python
+import requests
+
+headers = {
+    "X-Api-Key": "pkz_your_api_key_here",
+    "Content-Type": "application/json"
+}
+
+response = requests.post(
+    "https://api.pikzels.com/v1/thumbnail",
+    headers=headers,
+    json=data
+)
+```
+
+```javascript JavaScript
+const headers = {
+  'X-Api-Key': 'pkz_your_api_key_here',
+  'Content-Type': 'application/json'
+};
+
+const response = await fetch('https://api.pikzels.com/v1/thumbnail', {
+  method: 'POST',
+  headers: headers,
+  body: JSON.stringify(data)
+});
+```
+
+</CodeGroup>
+
+## Security Best Practices
+
+### Environment Variables
+
+Never hardcode API keys in your source code. Use environment variables instead:
+
+<CodeGroup>
+
+```python Python
+import os
+import requests
+
+api_key = os.environ.get('PIKZELS_API_KEY')
+
+headers = {
+    "X-Api-Key": api_key,
+    "Content-Type": "application/json"
+}
+```
+
+```javascript Node.js
+const apiKey = process.env.PIKZELS_API_KEY;
+
+const headers = {
+  'X-Api-Key': apiKey,
+  'Content-Type': 'application/json'
+};
+```
+
+```bash .env
+# .env file (add to .gitignore)
+PIKZELS_API_KEY=pkz_your_actual_api_key_here
+```
+
+</CodeGroup>
+
+### Backend Proxy
+
+For web applications, never expose your API key in frontend code. Instead, create a backend endpoint that proxies requests to Pikzels:
+
+```javascript
+// Backend (Node.js/Express example)
+app.post('/api/generate-thumbnail', async (req, res) => {
+  const response = await fetch('https://api.pikzels.com/v1/thumbnail', {
+    method: 'POST',
+    headers: {
+      'X-Api-Key': process.env.PIKZELS_API_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(req.body)
+  });
+  
+  const data = await response.json();
+  res.json(data);
+});
+
+// Frontend (safe to expose)
+fetch('/api/generate-thumbnail', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ prompt, format, model })
+});
+```
+
+## API Key Permissions
+
+Your API key has full access to all Pikzels API endpoints:
+
+- Generate thumbnails
+- Edit images
+- Recreate images
+- Face swap
+- Generate titles
+
+There are no scope restrictions - one key can access all features.
+
+## Authentication Errors
+
+If authentication fails, you'll receive a `401 Unauthorized` response:
+
+```json
+{
+  "error": {
+    "code": "INVALID_AUTH_HEADER",
+    "message": "Invalid Authorization Header",
+    "details": "Authentication credentials are missing or invalid"
+  }
+}
+```
+
+### Common Authentication Issues
+
+<AccordionGroup>
+  <Accordion title="Missing API Key" icon="key-skeleton">
+    **Error:** No X-Api-Key header provided
+    
+    **Solution:** Ensure you're including the header in your request
+    ```bash
+    -H "X-Api-Key: pkz_your_api_key_here"
+    ```
+  </Accordion>
+  
+  <Accordion title="Invalid API Key Format" icon="exclamation-triangle">
+    **Error:** API key doesn't start with `pkz_`
+    
+    **Solution:** Check that you're using a valid Pikzels API key
+  </Accordion>
+  
+  <Accordion title="Expired or Revoked Key" icon="clock">
+    **Error:** API key is no longer valid
+    
+    **Solution:** Generate a new API key from your dashboard
+  </Accordion>
+  
+  <Accordion title="Typo in Header Name" icon="spell-check">
+    **Error:** Using wrong header name (e.g., `API-Key` instead of `X-Api-Key`)
+    
+    **Solution:** Use exactly `X-Api-Key` as the header name
+  </Accordion>
+</AccordionGroup>
+
+## Key Rotation
+
+For security, we recommend rotating your API keys periodically:
+
+1. Generate a new API key from your dashboard
+2. Update your application to use the new key
+3. Verify the new key is working
+4. Revoke the old key from your dashboard
+
+<Note>
+  When you revoke a key, it immediately stops working. Make sure your application is using the new key before revoking the old one.
+</Note>
+
+## Multiple API Keys
+
+You can create multiple API keys for different purposes:
+
+- **Production Key** - For your live application
+- **Development Key** - For testing and development
+- **CI/CD Key** - For automated testing and deployment
+
+This allows you to:
+- Track usage per environment
+- Revoke keys independently
+- Apply different rate limits (if available)
+
+## Need Help?
+
+If you're having authentication issues:
+
+- Double-check your API key is correct
+- Verify you're using the right header name (`X-Api-Key`)
+- Ensure your key hasn't been revoked
+- Contact [support@pikzels.com](mailto:support@pikzels.com) for assistance
