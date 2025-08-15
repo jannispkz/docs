@@ -46,6 +46,16 @@
           "anchor": "Community",
           "href": "https://go.pikzels.com/discord",
           "icon": "discord"
+        },
+        {
+          "anchor": "Status",
+          "href": "https://status.pikzels.com/",
+          "icon": "chart-line"
+        },
+        {
+          "anchor": "Pricing",
+          "href": "https://app.pikzels.com/platform/pricing",
+          "icon": "credit-card"
         }
       ]
     }
