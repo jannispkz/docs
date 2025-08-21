@@ -96,5 +96,9 @@
       "linkedin": "https://www.linkedin.com/company/pikzels",
       "instagram": "https://www.instagram.com/pikzels.ai"
     }
+  },
+  "modeToggle": {
+    "default": "dark",
+    "isHidden": true
   }
 }
