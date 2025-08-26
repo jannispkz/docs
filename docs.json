@@ -96,8 +96,8 @@
       "instagram": "https://www.instagram.com/pikzels.ai"
     }
   },
-  "modeToggle": {
+  "appearance": {
     "default": "dark",
-    "isHidden": true
+    "strict": true
   }
 }
