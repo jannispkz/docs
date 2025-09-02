@@ -20,6 +20,14 @@ description: "Recreate an image with AI enhancement and modifications"
   Optional prompt to guide the recreation. Changes work best on pkz-3
 </ParamField>
 
+<ParamField body="persona" type="string" disabled>
+  Persona ID for recreation (optional, coming soon)
+</ParamField>
+
+<ParamField body="style" type="string" disabled>
+  Style ID for recreation (optional, coming soon)
+</ParamField>
+
 <RequestExample>
 ```bash Example Request
 curl --location --request POST 'https://api.pikzels.com/v1/recreate' \

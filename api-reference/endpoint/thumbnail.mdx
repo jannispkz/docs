@@ -16,6 +16,14 @@ description: "Create a new thumbnail image based on a text prompt"
   AI model to use for generation. Options: `pkz-1`, `pkz-2`, `pkz-3`. See [quickstart guide](/quickstart) for model details.
 </ParamField>
 
+<ParamField body="persona" type="string" disabled>
+  Persona ID for thumbnail generation (optional, coming soon)
+</ParamField>
+
+<ParamField body="style" type="string" disabled>
+  Style ID for thumbnail generation (optional, coming soon)
+</ParamField>
+
 <RequestExample>
 ```bash Example Request
 curl --location --request POST 'https://api.pikzels.com/v1/thumbnail' \
