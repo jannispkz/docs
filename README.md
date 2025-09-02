@@ -2,7 +2,7 @@
 
 [![API Version](https://img.shields.io/badge/API-v3.1.0-brightgreen)](https://api.pikzels.com)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289DA)](https://go.pikzels.com/discord)
-[![Support](https://img.shields.io/badge/Support-support%40pikzels.com-blue)](mailto:support@pikzels.com)
+[![Support](https://img.shields.io/badge/Support-api%40pikzels.com-blue)](mailto:api@pikzels.com)
 
 Official documentation for the Pikzels API - AI-powered image generation and manipulation services.
 
@@ -69,7 +69,7 @@ Three AI models: **pkz-1** (gaming), **pkz-2** (realistic), **pkz-3** (advanced)
 ## 💬 Community & Support
 
 - **Discord**: [Join our community](https://go.pikzels.com/discord)
-- **Email**: [support@pikzels.com](mailto:support@pikzels.com)
+- **Email**: [api@pikzels.com](mailto:api@pikzels.com)
 - **GitHub**: [@Pikzels](https://github.com/Pikzels)
 - **Twitter**: [@Pikzels](https://x.com/Pikzels)
 
