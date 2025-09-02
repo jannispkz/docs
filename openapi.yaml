@@ -251,11 +251,17 @@ paths:
               type: object
               required:
                 - prompt
+                - model
               properties:
                 prompt:
                   type: string
                   description: Text prompt for title generation
                   example: "top 10 cat breeds"
+                model:
+                  type: string
+                  description: AI model to use for title generation
+                  enum: ["pkz-3"]
+                  example: "pkz-3"
       responses:
         '200':
           description: Successful title generation

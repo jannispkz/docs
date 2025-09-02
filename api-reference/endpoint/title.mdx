@@ -8,13 +8,18 @@ description: "Generate creative titles or text content"
   Text prompt for title generation
 </ParamField>
 
+<ParamField body="model" type="string" required>
+  AI model to use for title generation. Only "pkz-3" is available.
+</ParamField>
+
 <RequestExample>
 ```bash Example Request
 curl --location --request POST 'https://api.pikzels.com/v1/title' \
 --header 'X-Api-Key: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "prompt": "top 10 cat breeds"
+  "prompt": "top 10 cat breeds",
+  "model": "pkz-3"
 }'
 ```
 </RequestExample>
