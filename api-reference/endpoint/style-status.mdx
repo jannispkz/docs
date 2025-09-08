@@ -14,7 +14,7 @@ import CommonErrors from '/snippets/common-errors.mdx';
 
 <AccordionGroup>
   <Accordion title="Queued" icon="clock">
-    Your training request is in the queue and will begin processing soon.
+    Training request is in the queue and will begin processing soon.
   </Accordion>
   
   <Accordion title="Analyzing" icon="magnifying-glass">
@@ -76,7 +76,7 @@ curl --location --request GET 'https://api.pikzels.com/v1/style?id=xyz789ghi012'
 </ResponseField>
 
 <ResponseField name="name" type="string">
-  The name you assigned to this style
+  The name assigned to this style
 </ResponseField>
 
 <ResponseField name="status" type="string">
@@ -88,12 +88,12 @@ curl --location --request GET 'https://api.pikzels.com/v1/style?id=xyz789ghi012'
 </ResponseField>
 
 <ResponseField name="temp_portrait_url" type="string">
-  Preview image showing your trained style applied to sample content. Returns "none" if not yet available.
+  Preview image showing the trained style applied to sample content. Returns "none" if not yet available.
 </ResponseField>
 
 ## Using Your Style
 
-Once status is "Ready", use your style ID in generation requests:
+Once status is "Ready", use the style ID in generation requests:
 
 <CodeGroup>
 ```json Thumbnail Generation

@@ -14,7 +14,7 @@ import CommonErrors from '/snippets/common-errors.mdx';
 
 <AccordionGroup>
   <Accordion title="Queued" icon="clock">
-    Your training request is in the queue and will begin processing soon.
+    Training request is in the queue and will begin processing soon.
   </Accordion>
   
   <Accordion title="Analyzing" icon="magnifying-glass">
@@ -76,7 +76,7 @@ curl --location --request GET 'https://api.pikzels.com/v1/persona?id=abc123def45
 </ResponseField>
 
 <ResponseField name="name" type="string">
-  The name you assigned to this persona
+  The name assigned to this persona
 </ResponseField>
 
 <ResponseField name="status" type="string">
@@ -88,12 +88,12 @@ curl --location --request GET 'https://api.pikzels.com/v1/persona?id=abc123def45
 </ResponseField>
 
 <ResponseField name="temp_portrait_url" type="string">
-  Preview image of your trained persona. Returns "none" if not yet available.
+  Preview image of the trained persona. Returns "none" if not yet available.
 </ResponseField>
 
 ## Using Your Persona
 
-Once status is "Ready", use your persona ID in generation requests:
+Once status is "Ready", use the persona ID in generation requests:
 
 <CodeGroup>
 ```json Thumbnail Generation
