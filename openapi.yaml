@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Pikzels API
   version: 3.1.0
-  description: REST API for Pikzels image generation and manipulation services
+  description: Generate viral YouTube thumbnails and titles that get clicks
   contact:
     name: Pikzels Support
     url: https://pikzels.com
@@ -71,7 +71,7 @@ paths:
   /v1/edit:
     post:
       summary: Edit Image
-      description: Edit an existing image using AI-powered modifications
+      description: Transform existing images with smart modifications
       operationId: editImage
       security:
         - ApiKeyAuth: []
@@ -126,7 +126,7 @@ paths:
   /v1/recreate:
     post:
       summary: Recreate Image
-      description: Recreate an image with AI enhancement and modifications
+      description: Recreate images with enhancement and creative modifications
       operationId: recreateImage
       security:
         - ApiKeyAuth: []
@@ -187,7 +187,7 @@ paths:
   /v1/faceswap:
     post:
       summary: Face Swap
-      description: Swap faces between images using AI
+      description: Seamlessly swap faces between images
       operationId: faceSwap
       security:
         - ApiKeyAuth: []

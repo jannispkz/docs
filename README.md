@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289DA)](https://go.pikzels.com/discord)
 [![Support](https://img.shields.io/badge/Support-api%40pikzels.com-blue)](mailto:api@pikzels.com)
 
-Official documentation for the Pikzels API - AI-powered image generation and manipulation services.
+Official documentation for the Pikzels API - generate viral YouTube thumbnails and titles that get clicks.
 
 ## 🚀 Quick Start
 
