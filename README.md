@@ -58,6 +58,10 @@ All API endpoints require an API key. Get yours from the [Pikzels Dashboard](htt
 | `/v1/recreate` | POST | Recreate and enhance images |
 | `/v1/faceswap` | POST | Swap faces between images |
 | `/v1/title` | POST | Generate creative titles |
+| `/v1/persona` | POST | Train custom persona models |
+| `/v1/persona` | GET | Check persona training status |
+| `/v1/style` | POST | Train custom style models |
+| `/v1/style` | GET | Check style training status |
 
 ## 🎨 Supported Formats
 
