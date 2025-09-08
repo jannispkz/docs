@@ -12,6 +12,10 @@ description: "Seamlessly swap faces between images"
   URL of the source face image
 </ParamField>
 
+<ParamField body="persona" type="string">
+  Optional persona ID from [custom training](/api-reference/endpoint/persona-create). Use this instead of face_url to swap with your trained persona
+</ParamField>
+
 <RequestExample>
 ```bash Example Request
 curl --location --request POST 'https://api.pikzels.com/v1/faceswap' \

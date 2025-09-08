@@ -1,0 +1,73 @@
+---
+title: "Train Persona"
+api: "POST https://api.pikzels.com/v1/persona"
+description: "Train a custom persona model using your images for consistent character generation"
+---
+
+Train a custom persona model on your own images to generate content featuring specific people or characters consistently across your thumbnails.
+
+<Warning>
+Training typically takes around 3 minutes. You'll receive a unique persona ID that you can use with the thumbnail, recreate, and faceswap endpoints once training is complete.
+</Warning>
+
+<ParamField body="name" type="string" required>
+  Name for your persona model (maximum 25 characters)
+</ParamField>
+
+<ParamField body="training_data" type="string" required>
+  URL to a zip file containing 1-20 PNG or JPEG training images. The zip file must be publicly accessible and under 200MB total size.
+</ParamField>
+
+## Image Requirements
+
+- **File Format**: PNG or JPEG only
+- **Image Count**: 1-20 images (if you include more than 20, only the first 20 will be used)
+- **Individual File Size**: Maximum 8MB per image
+- **Total Zip Size**: Maximum 200MB
+- **Image Quality**: High-quality, clear images work best for training
+
+## Training Process
+
+1. **Upload**: Your zip file is downloaded and validated
+2. **Processing**: Images are analyzed and prepared for training
+3. **Training**: The AI model learns from your images (~3 minutes)
+4. **Ready**: Your persona is available for use in generation
+
+<RequestExample>
+```bash Example Request
+curl --location --request POST 'https://api.pikzels.com/v1/persona' \
+--header 'X-Api-Key: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "My Character",
+  "training_data": "https://example.com/training-images.zip"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "status": "queued",
+  "id": "persona_1234567890"
+}
+```
+</ResponseExample>
+
+## Using Your Trained Persona
+
+Once training is complete, use your persona ID in generation endpoints:
+
+```json
+{
+  "prompt": "epic adventure scene",
+  "format": "16:9", 
+  "model": "pkz-3",
+  "persona": "persona_1234567890"
+}
+```
+
+## Next Steps
+
+- Use [GET /v1/persona](/api-reference/endpoint/persona-status) to check training status
+- Use your trained persona in [thumbnail](/api-reference/endpoint/thumbnail), [recreate](/api-reference/endpoint/recreate), or [faceswap](/api-reference/endpoint/faceswap) generation

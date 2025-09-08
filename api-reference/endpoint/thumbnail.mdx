@@ -17,15 +17,15 @@ description: "Create a new thumbnail image based on a text prompt"
 </ParamField>
 
 <ParamField body="persona" type="string">
-  Persona ID that you received from training
+  Optional persona ID from [custom training](/api-reference/endpoint/persona-create) for consistent character generation
 </ParamField>
 
 <ParamField body="style" type="string">
-  Style ID that you received from training
+  Optional style ID from [custom training](/api-reference/endpoint/style-create) to apply specific artistic styles
 </ParamField>
 
 <RequestExample>
-```bash Example Request
+```bash Basic Request
 curl --location --request POST 'https://api.pikzels.com/v1/thumbnail' \
 --header 'X-Api-Key: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
@@ -33,6 +33,19 @@ curl --location --request POST 'https://api.pikzels.com/v1/thumbnail' \
   "prompt": "cat",
   "format": "16:9",
   "model": "pkz-2"
+}'
+```
+
+```bash With Custom Training
+curl --location --request POST 'https://api.pikzels.com/v1/thumbnail' \
+--header 'X-Api-Key: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "prompt": "epic gaming moment",
+  "format": "16:9",
+  "model": "pkz-3",
+  "persona": "persona_1234567890",
+  "style": "style_0987654321"
 }'
 ```
 </RequestExample>

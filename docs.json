@@ -36,6 +36,15 @@
             "pages": [
               "api-reference/endpoint/title"
             ]
+          },
+          {
+            "group": "Custom Training",
+            "pages": [
+              "api-reference/endpoint/persona-create",
+              "api-reference/endpoint/persona-status",
+              "api-reference/endpoint/style-create",
+              "api-reference/endpoint/style-status"
+            ]
           }
         ]
       }

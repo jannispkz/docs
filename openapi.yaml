@@ -286,6 +286,230 @@ paths:
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
 
+  /v1/persona:
+    post:
+      summary: Train Persona
+      description: Train a custom persona model using your images for consistent character generation
+      operationId: trainPersona
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - training_data
+              properties:
+                name:
+                  type: string
+                  maxLength: 25
+                  description: Name for your persona model
+                  example: "My Character"
+                training_data:
+                  type: string
+                  format: uri
+                  description: URL to a zip file containing 1-20 PNG or JPEG training images (max 200MB)
+                  example: "https://example.com/training-images.zip"
+      responses:
+        '200':
+          description: Training initiated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "queued"
+                  id:
+                    type: string
+                    example: "persona_1234567890"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientBalance'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+    get:
+      summary: Check Persona Status
+      description: Check the training status and progress of your persona model
+      operationId: getPersonaStatus
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The persona ID returned from training request
+          example: "persona_1234567890"
+      responses:
+        '200':
+          description: Persona status retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: "persona_1234567890"
+                  created:
+                    type: number
+                    description: Unix timestamp of training initiation
+                    example: 1704067200
+                  name:
+                    type: string
+                    example: "My Character"
+                  status:
+                    type: string
+                    enum: ["Queued", "Analyzing", "Training", "Ready"]
+                    example: "Ready"
+                  progress:
+                    type: number
+                    minimum: 0
+                    maximum: 100
+                    description: Training progress percentage
+                    example: 100
+                  temp_portrait_url:
+                    type: string
+                    description: Preview image URL (available for 12 hours)
+                    example: "https://media.pikzels.com/temp/portrait_abc123.jpg"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /v1/style:
+    post:
+      summary: Train Style
+      description: Train a custom style model to apply consistent artistic styles to your content
+      operationId: trainStyle
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - training_data
+              properties:
+                name:
+                  type: string
+                  maxLength: 25
+                  description: Name for your style model
+                  example: "Cyberpunk Aesthetic"
+                training_data:
+                  type: string
+                  format: uri
+                  description: URL to a zip file containing 1-3 PNG or JPEG reference images (max 200MB)
+                  example: "https://example.com/style-references.zip"
+      responses:
+        '200':
+          description: Training initiated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "queued"
+                  id:
+                    type: string
+                    example: "style_1234567890"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientBalance'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+    get:
+      summary: Check Style Status
+      description: Check the training status and progress of your style model
+      operationId: getStyleStatus
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The style ID returned from training request
+          example: "style_1234567890"
+      responses:
+        '200':
+          description: Style status retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: "style_1234567890"
+                  created:
+                    type: number
+                    description: Unix timestamp of training initiation
+                    example: 1704067200
+                  name:
+                    type: string
+                    example: "Cyberpunk Aesthetic"
+                  status:
+                    type: string
+                    enum: ["Queued", "Analyzing", "Training", "Ready"]
+                    example: "Ready"
+                  progress:
+                    type: number
+                    minimum: 0
+                    maximum: 100
+                    description: Training progress percentage
+                    example: 100
+                  temp_portrait_url:
+                    type: string
+                    description: Preview image URL (available for 12 hours)
+                    example: "https://media.pikzels.com/temp/style_preview_abc123.jpg"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -352,6 +576,18 @@ components:
               code: "INSUFFICIENT_BALANCE"
               message: "Not Enough Balance"
               details: "Your account does not have enough balance to complete this request. Please add funds or enable auto top-up to prevent running out of credits in the future."
+
+    NotFound:
+      description: Not Found - Resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "NOT_FOUND"
+              message: "Model Not Found"
+              details: "The specified model does not exist or is not available. Please verify the model ID and refer to the Pikzels API documentation"
 
     TooManyRequests:
       description: Too Many Requests - Rate limit exceeded

@@ -26,6 +26,7 @@ Visit our full documentation at [docs.pikzels.com](https://docs.pikzels.com) to 
 - **Face Swapping** - Seamlessly swap faces between images
 - **Image Recreation** - Enhance and recreate images with your spin
 - **Title Generation** - Generate engaging text content
+- **Custom Training** - Train personalized AI models on your own content
 
 ## 🛠️ Local Development
 

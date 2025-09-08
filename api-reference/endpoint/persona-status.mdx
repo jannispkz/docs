@@ -1,0 +1,115 @@
+---
+title: "Check Persona Status"
+api: "GET https://api.pikzels.com/v1/persona"
+description: "Check the training status and progress of your persona model"
+---
+
+Poll the training status of your persona model to know when it's ready for use in content generation.
+
+<ParamField query="id" type="string" required>
+  The persona ID returned from the training request
+</ParamField>
+
+## Status Values
+
+<AccordionGroup>
+  <Accordion title="Queued" icon="clock">
+    Your training request is in the queue and will begin processing soon.
+  </Accordion>
+  
+  <Accordion title="Analyzing" icon="magnifying-glass">
+    Images are being analyzed and prepared for training.
+  </Accordion>
+  
+  <Accordion title="Training" icon="brain">
+    The AI model is actively learning from your images. This typically takes around 3 minutes.
+  </Accordion>
+  
+  <Accordion title="Ready" icon="check">
+    Training is complete! Your persona is ready to use in generation requests.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+The `temp_portrait_url` is only available for 12 hours after training completes. Download and host this image yourself if you want to keep it permanently.
+</Warning>
+
+<RequestExample>
+```bash Example Request
+curl --location --request GET 'https://api.pikzels.com/v1/persona?id=persona_1234567890' \
+--header 'X-Api-Key: YOUR_API_KEY'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Training Complete
+{
+  "id": "persona_1234567890",
+  "created": 1704067200,
+  "name": "My Character",
+  "status": "Ready",
+  "progress": 100,
+  "temp_portrait_url": "https://media.pikzels.com/temp/portrait_abc123.jpg"
+}
+```
+
+```json Still Training
+{
+  "id": "persona_1234567890", 
+  "created": 1704067200,
+  "name": "My Character",
+  "status": "Training",
+  "progress": 65,
+  "temp_portrait_url": "none"
+}
+```
+</ResponseExample>
+
+## Response Fields
+
+<ResponseField name="id" type="string">
+  The unique identifier for your persona model
+</ResponseField>
+
+<ResponseField name="created" type="number">
+  Unix timestamp of when training was initiated
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  The name you assigned to this persona
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Current training status: "Queued", "Analyzing", "Training", or "Ready"
+</ResponseField>
+
+<ResponseField name="progress" type="number">
+  Training progress as a percentage (0-100)
+</ResponseField>
+
+<ResponseField name="temp_portrait_url" type="string">
+  Preview image of your trained persona. Available for 12 hours after training completion. Returns "none" if not yet available.
+</ResponseField>
+
+## Using Your Persona
+
+Once status is "Ready", use your persona ID in generation requests:
+
+<CodeGroup>
+```json Thumbnail Generation
+{
+  "prompt": "epic gaming moment",
+  "format": "16:9",
+  "model": "pkz-3", 
+  "persona": "persona_1234567890"
+}
+```
+
+```json Face Swap
+{
+  "image_url": "https://example.com/target.jpg",
+  "face_url": "https://example.com/source.jpg",
+  "persona": "persona_1234567890"
+}
+```
+</CodeGroup>

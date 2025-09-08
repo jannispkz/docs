@@ -1,0 +1,125 @@
+---
+title: "Check Style Status"
+api: "GET https://api.pikzels.com/v1/style"
+description: "Check the training status and progress of your style model"
+---
+
+Poll the training status of your style model to know when it's ready for use in content generation.
+
+<ParamField query="id" type="string" required>
+  The style ID returned from the training request
+</ParamField>
+
+## Status Values
+
+<AccordionGroup>
+  <Accordion title="Queued" icon="clock">
+    Your training request is in the queue and will begin processing soon.
+  </Accordion>
+  
+  <Accordion title="Analyzing" icon="magnifying-glass">
+    Reference images are being analyzed for style elements.
+  </Accordion>
+  
+  <Accordion title="Training" icon="palette">
+    The AI model is learning your artistic style. This typically takes around 1 minute.
+  </Accordion>
+  
+  <Accordion title="Ready" icon="check">
+    Training is complete! Your style is ready to use in generation requests.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+The `temp_portrait_url` is only available for 12 hours after training completes. Download and host this image yourself if you want to keep it permanently.
+</Warning>
+
+<RequestExample>
+```bash Example Request
+curl --location --request GET 'https://api.pikzels.com/v1/style?id=style_1234567890' \
+--header 'X-Api-Key: YOUR_API_KEY'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Training Complete
+{
+  "id": "style_1234567890",
+  "created": 1704067200,
+  "name": "Cyberpunk Aesthetic",
+  "status": "Ready",
+  "progress": 100,
+  "temp_portrait_url": "https://media.pikzels.com/temp/style_preview_abc123.jpg"
+}
+```
+
+```json Still Training
+{
+  "id": "style_1234567890", 
+  "created": 1704067200,
+  "name": "Cyberpunk Aesthetic",
+  "status": "Training",
+  "progress": 45,
+  "temp_portrait_url": "none"
+}
+```
+</ResponseExample>
+
+## Response Fields
+
+<ResponseField name="id" type="string">
+  The unique identifier for your style model
+</ResponseField>
+
+<ResponseField name="created" type="number">
+  Unix timestamp of when training was initiated
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  The name you assigned to this style
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Current training status: "Queued", "Analyzing", "Training", or "Ready"
+</ResponseField>
+
+<ResponseField name="progress" type="number">
+  Training progress as a percentage (0-100)
+</ResponseField>
+
+<ResponseField name="temp_portrait_url" type="string">
+  Preview image showing your trained style applied to sample content. Available for 12 hours after training completion. Returns "none" if not yet available.
+</ResponseField>
+
+## Using Your Style
+
+Once status is "Ready", use your style ID in generation requests:
+
+<CodeGroup>
+```json Thumbnail Generation
+{
+  "prompt": "epic battle scene",
+  "format": "16:9",
+  "model": "pkz-3", 
+  "style": "style_1234567890"
+}
+```
+
+```json Image Recreation
+{
+  "image_url": "https://example.com/original.jpg",
+  "model": "pkz-3",
+  "style": "style_1234567890"
+}
+```
+
+```json Combined with Persona
+{
+  "prompt": "heroic character pose",
+  "format": "16:9",
+  "model": "pkz-3",
+  "persona": "persona_abc123",
+  "style": "style_1234567890"
+}
+```
+</CodeGroup>

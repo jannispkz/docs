@@ -1,0 +1,89 @@
+---
+title: "Train Style"
+api: "POST https://api.pikzels.com/v1/style"
+description: "Train a custom style model to apply consistent artistic styles to your content"
+---
+
+Train a custom style model on reference images to apply specific artistic styles, aesthetics, or visual approaches to your generated content.
+
+<Warning>
+Training typically takes around 1 minute. You'll receive a unique style ID that you can use with the thumbnail and recreate endpoints once training is complete.
+</Warning>
+
+<ParamField body="name" type="string" required>
+  Name for your style model (maximum 25 characters)
+</ParamField>
+
+<ParamField body="training_data" type="string" required>
+  URL to a zip file containing 1-3 PNG or JPEG reference images. The zip file must be publicly accessible and under 200MB total size.
+</ParamField>
+
+## Image Requirements
+
+- **File Format**: PNG or JPEG only
+- **Image Count**: 1-3 images (if you include more than 3, only the first 3 will be used)
+- **Individual File Size**: Maximum 8MB per image
+- **Total Zip Size**: Maximum 200MB
+- **Image Quality**: High-quality reference images that clearly show the desired style work best
+
+## Training Process
+
+1. **Upload**: Your zip file is downloaded and validated
+2. **Processing**: Style elements are analyzed and extracted
+3. **Training**: The AI model learns the artistic style (~1 minute)
+4. **Ready**: Your style is available for use in generation
+
+<RequestExample>
+```bash Example Request
+curl --location --request POST 'https://api.pikzels.com/v1/style' \
+--header 'X-Api-Key: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "Cyberpunk Aesthetic",
+  "training_data": "https://example.com/style-references.zip"
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Response
+{
+  "status": "queued",
+  "id": "style_1234567890"
+}
+```
+</ResponseExample>
+
+## Style Training Tips
+
+<AccordionGroup>
+  <Accordion title="Consistent Elements" icon="palette">
+    Use images that share consistent visual elements like color palettes, lighting, or artistic techniques.
+  </Accordion>
+  
+  <Accordion title="Clear Examples" icon="eye">
+    Choose reference images that clearly demonstrate the style you want to replicate.
+  </Accordion>
+  
+  <Accordion title="Quality Matters" icon="star">
+    High-resolution, well-composed reference images produce better style training results.
+  </Accordion>
+</AccordionGroup>
+
+## Using Your Trained Style
+
+Once training is complete, use your style ID in generation endpoints:
+
+```json
+{
+  "prompt": "futuristic cityscape",
+  "format": "16:9", 
+  "model": "pkz-3",
+  "style": "style_1234567890"
+}
+```
+
+## Next Steps
+
+- Use [GET /v1/style](/api-reference/endpoint/style-status) to check training status
+- Use your trained style in [thumbnail](/api-reference/endpoint/thumbnail) or [recreate](/api-reference/endpoint/recreate) generation
