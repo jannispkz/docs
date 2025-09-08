@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289DA)](https://go.pikzels.com/discord)
 [![Support](https://img.shields.io/badge/Support-api%40pikzels.com-blue)](mailto:api@pikzels.com)
 
-Official documentation for the Pikzels API - **100X YOUR VIEWS** with viral YouTube thumbnails and titles.
+Official documentation for the Pikzels API - **100X YOUR VIEWS** with viral content creation tools.
 
 ## 🚀 Quick Start
 
@@ -21,10 +21,10 @@ curl -X POST https://api.pikzels.com/v1/thumbnail \
 
 Visit our full documentation at [docs.pikzels.com](https://docs.pikzels.com) to learn about:
 
-- **Image Generation** - Create thumbnails from text prompts
-- **Image Editing** - Modify existing images with AI
+- **Image Generation** - Create eye-catching visuals from text prompts
+- **Image Editing** - Transform existing images with smart edits
 - **Face Swapping** - Seamlessly swap faces between images
-- **Image Recreation** - Enhance and recreate images
+- **Image Recreation** - Enhance and recreate images with your spin
 - **Title Generation** - Generate engaging text content
 
 ## 🛠️ Local Development

@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Pikzels API
   version: 3.1.0
-  description: 100X YOUR VIEWS - Generate viral YouTube thumbnails and titles
+  description: 100X YOUR VIEWS - Create viral content that dominates the algorithm
   contact:
     name: Pikzels Support
     url: https://pikzels.com
