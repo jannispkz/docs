@@ -4,6 +4,8 @@ api: "POST https://api.pikzels.com/v1/thumbnail"
 description: "Create a new thumbnail image based on a text prompt"
 ---
 
+import CommonErrors from '/snippets/common-errors.mdx';
+
 <ParamField body="prompt" type="string" required>
   Text prompt describing the desired thumbnail
 </ParamField>
@@ -57,3 +59,7 @@ curl --location --request POST 'https://api.pikzels.com/v1/thumbnail' \
 }
 ```
 </ResponseExample>
+
+## Common Errors
+
+<CommonErrors />

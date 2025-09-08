@@ -4,6 +4,8 @@ api: "POST https://api.pikzels.com/v1/style"
 description: "Create a custom Style"
 ---
 
+import CommonErrors from '/snippets/common-errors.mdx';
+
 <Warning>
 Training typically takes around 1 minute. Unlike other endpoints, training returns immediately with a status - you must poll the GET endpoint to check progress.
 </Warning>
@@ -79,6 +81,28 @@ Once training is complete, use your style ID in generation endpoints:
   "style": "xyz789ghi012"
 }
 ```
+
+## Common Errors
+
+<CommonErrors />
+
+### Training-Specific Errors
+
+<AccordionGroup>
+  <Accordion title="400 - Invalid Training Data" icon="exclamation-triangle">
+    ```json
+    {
+      "error": {
+        "code": "INVALID_TRAINING_DATA",
+        "message": "Invalid Training Data", 
+        "details": "The provided training data is invalid or corrupted. Please check your data format, ensure all required fields are present, and verify that the data meets the specified requirements before resubmitting."
+      }
+    }
+    ```
+    
+    **Common causes**: Corrupted zip file, non-image files, unsupported formats, or inaccessible URL.
+  </Accordion>
+</AccordionGroup>
 
 ## Next Steps
 

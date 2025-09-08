@@ -4,6 +4,8 @@ api: "POST https://api.pikzels.com/v1/faceswap"
 description: "Seamlessly swap faces between images"
 ---
 
+import CommonErrors from '/snippets/common-errors.mdx';
+
 <ParamField body="image_url" type="string" required>
   URL of the target image where face will be placed
 </ParamField>
@@ -35,3 +37,7 @@ curl --location --request POST 'https://api.pikzels.com/v1/faceswap' \
 }
 ```
 </ResponseExample>
+
+## Common Errors
+
+<CommonErrors />

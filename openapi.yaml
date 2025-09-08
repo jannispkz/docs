@@ -589,6 +589,18 @@ components:
               message: "Model Not Found"
               details: "The specified model does not exist or is not available. Please verify the model ID and refer to the Pikzels API documentation"
 
+    InvalidTrainingData:
+      description: Bad Request - Invalid training data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "INVALID_TRAINING_DATA"
+              message: "Invalid Training Data"
+              details: "The provided training data is invalid or corrupted. Please check your data format, ensure all required fields are present, and verify that the data meets the specified requirements before resubmitting."
+
     TooManyRequests:
       description: Too Many Requests - Rate limit exceeded
       content:

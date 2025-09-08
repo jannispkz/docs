@@ -4,6 +4,8 @@ api: "POST https://api.pikzels.com/v1/title"
 description: "Generate creative titles or text content"
 ---
 
+import CommonErrors from '/snippets/common-errors.mdx';
+
 <ParamField body="prompt" type="string" required>
   Text prompt for title generation
 </ParamField>
@@ -31,3 +33,7 @@ curl --location --request POST 'https://api.pikzels.com/v1/title' \
 }
 ```
 </ResponseExample>
+
+## Common Errors
+
+<CommonErrors />

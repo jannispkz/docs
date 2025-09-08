@@ -4,6 +4,8 @@ api: "GET https://api.pikzels.com/v1/persona"
 description: "Get details about a created Persona"
 ---
 
+import CommonErrors from '/snippets/common-errors.mdx';
+
 <ParamField query="id" type="string" required>
   The persona ID returned from the training request
 </ParamField>
@@ -111,3 +113,23 @@ Once status is "Ready", use your persona ID in generation requests:
 }
 ```
 </CodeGroup>
+
+## Common Errors
+
+<CommonErrors />
+
+### Status-Specific Errors
+
+<AccordionGroup>
+  <Accordion title="404 - Model Not Found" icon="magnifying-glass">
+    ```json
+    {
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "Model Not Found",
+        "details": "The specified model does not exist or is not available. Please verify the model ID and refer to the Pikzels API documentation"
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>

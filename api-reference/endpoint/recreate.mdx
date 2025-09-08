@@ -4,6 +4,8 @@ api: "POST https://api.pikzels.com/v1/recreate"
 description: "Recreate images with enhancement and creative modifications"
 ---
 
+import CommonErrors from '/snippets/common-errors.mdx';
+
 <ParamField body="image_url" type="string" required>
   URL of the source image to recreate
 </ParamField>
@@ -48,3 +50,7 @@ curl --location --request POST 'https://api.pikzels.com/v1/recreate' \
 }
 ```
 </ResponseExample>
+
+## Common Errors
+
+<CommonErrors />

@@ -4,6 +4,8 @@ api: "POST https://api.pikzels.com/v1/edit"
 description: "Transform existing images with smart modifications"
 ---
 
+import CommonErrors from '/snippets/common-errors.mdx';
+
 <ParamField body="prompt" type="string" required>
   Instructions for how to edit the image
 </ParamField>
@@ -35,3 +37,7 @@ curl --location --request POST 'https://api.pikzels.com/v1/edit' \
 }
 ```
 </ResponseExample>
+
+## Common Errors
+
+<CommonErrors />
