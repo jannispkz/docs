@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289DA)](https://go.pikzels.com/discord)
 [![Support](https://img.shields.io/badge/Support-api%40pikzels.com-blue)](mailto:api@pikzels.com)
 
-Official documentation for the Pikzels API - generate viral YouTube thumbnails and titles that get clicks.
+Official documentation for the Pikzels API - **100X YOUR VIEWS** with viral YouTube thumbnails and titles.
 
 ## 🚀 Quick Start
 
