@@ -38,7 +38,7 @@
             ]
           },
           {
-            "group": "Custom Training",
+            "group": "Personas / Styles",
             "pages": [
               "api-reference/endpoint/persona-create",
               "api-reference/endpoint/persona-status",
