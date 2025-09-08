@@ -601,6 +601,42 @@ components:
               message: "Invalid Training Data"
               details: "The provided training data is invalid or corrupted. Please check your data format, ensure all required fields are present, and verify that the data meets the specified requirements before resubmitting."
 
+    ContentPolicyViolation:
+      description: Bad Request - Content policy violation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "CONTENT_POLICY_VIOLATION"
+              message: "Request Blocked"
+              details: "Your request violates our content policy and cannot be processed. Please adjust your input and try again."
+
+    InvalidOriginalImage:
+      description: Bad Request - Invalid original image
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "INVALID_ORIGINAL_IMAGE"
+              message: "Invalid Image"
+              details: "The provided 'original_image' is missing, corrupted, in an unsupported format or contains no face. Please check your input and try again."
+
+    InvalidFaceImage:
+      description: Bad Request - Invalid face image
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: "INVALID_FACE_IMAGE"
+              message: "Invalid Image"
+              details: "The provided 'face_image' is missing, corrupted, in an unsupported format or contains no face. Please check your input and try again."
+
     TooManyRequests:
       description: Too Many Requests - Rate limit exceeded
       content:
