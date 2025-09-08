@@ -36,7 +36,7 @@ The `temp_portrait_url` is only available for 12 hours after training completes.
 
 <RequestExample>
 ```bash Example Request
-curl --location --request GET 'https://api.pikzels.com/v1/persona?id=persona_1234567890' \
+curl --location --request GET 'https://api.pikzels.com/v1/persona?id=abc123def456' \
 --header 'X-Api-Key: YOUR_API_KEY'
 ```
 </RequestExample>
@@ -44,7 +44,7 @@ curl --location --request GET 'https://api.pikzels.com/v1/persona?id=persona_123
 <ResponseExample>
 ```json Training Complete
 {
-  "id": "persona_1234567890",
+  "id": "abc123def456",
   "created": 1704067200,
   "name": "My Character",
   "status": "Ready",
@@ -55,7 +55,7 @@ curl --location --request GET 'https://api.pikzels.com/v1/persona?id=persona_123
 
 ```json Still Training
 {
-  "id": "persona_1234567890", 
+  "id": "abc123def456", 
   "created": 1704067200,
   "name": "My Character",
   "status": "Training",
@@ -101,7 +101,7 @@ Once status is "Ready", use your persona ID in generation requests:
   "prompt": "epic gaming moment",
   "format": "16:9",
   "model": "pkz-3", 
-  "persona": "persona_1234567890"
+  "persona": "abc123def456"
 }
 ```
 
@@ -109,7 +109,7 @@ Once status is "Ready", use your persona ID in generation requests:
 {
   "image_url": "https://example.com/target.jpg",
   "face_url": "https://example.com/source.jpg",
-  "persona": "persona_1234567890"
+  "persona": "abc123def456"
 }
 ```
 </CodeGroup>

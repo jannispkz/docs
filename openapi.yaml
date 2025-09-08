@@ -326,7 +326,7 @@ paths:
                     example: "queued"
                   id:
                     type: string
-                    example: "persona_1234567890"
+                    example: "abc123def456"
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -352,7 +352,7 @@ paths:
           schema:
             type: string
           description: The persona ID returned from training request
-          example: "persona_1234567890"
+          example: "abc123def456"
       responses:
         '200':
           description: Persona status retrieved successfully
@@ -363,7 +363,7 @@ paths:
                 properties:
                   id:
                     type: string
-                    example: "persona_1234567890"
+                    example: "abc123def456"
                   created:
                     type: number
                     description: Unix timestamp of training initiation
@@ -438,7 +438,7 @@ paths:
                     example: "queued"
                   id:
                     type: string
-                    example: "style_1234567890"
+                    example: "xyz789ghi012"
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -464,7 +464,7 @@ paths:
           schema:
             type: string
           description: The style ID returned from training request
-          example: "style_1234567890"
+          example: "xyz789ghi012"
       responses:
         '200':
           description: Style status retrieved successfully
@@ -475,7 +475,7 @@ paths:
                 properties:
                   id:
                     type: string
-                    example: "style_1234567890"
+                    example: "xyz789ghi012"
                   created:
                     type: number
                     description: Unix timestamp of training initiation
