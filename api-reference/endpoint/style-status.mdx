@@ -128,18 +128,8 @@ Once status is "Ready", use your style ID in generation requests:
 
 <CommonErrors />
 
-### Status-Specific Errors
+### Endpoint-Specific Errors
 
-<AccordionGroup>
-  <Accordion title="404 - Model Not Found" icon="magnifying-glass">
-    ```json
-    {
-      "error": {
-        "code": "NOT_FOUND",
-        "message": "Model Not Found",
-        "details": "The specified model does not exist or is not available. Please verify the model ID and refer to the Pikzels API documentation"
-      }
-    }
-    ```
-  </Accordion>
-</AccordionGroup>
+| Status Code | Reason |
+|-------------|--------|
+| 404 | Not Found — Model does not exist or is not available |
