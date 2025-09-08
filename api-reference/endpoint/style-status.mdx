@@ -65,32 +65,6 @@ curl --location --request GET 'https://api.pikzels.com/v1/style?id=xyz789ghi012'
 ```
 </ResponseExample>
 
-## Response Fields
-
-<ResponseField name="id" type="string">
-  The unique identifier for your style model
-</ResponseField>
-
-<ResponseField name="created" type="number">
-  Unix timestamp of when training was initiated
-</ResponseField>
-
-<ResponseField name="name" type="string">
-  The name assigned to this style
-</ResponseField>
-
-<ResponseField name="status" type="string">
-  Current training status
-</ResponseField>
-
-<ResponseField name="progress" type="number">
-  Training progress as a percentage (0-100)
-</ResponseField>
-
-<ResponseField name="temp_portrait_url" type="string">
-  Preview image showing the trained style applied to sample content. Returns "none" if not yet available.
-</ResponseField>
-
 ## Using Your Style
 
 Once status is "Ready", use the style ID in generation requests:

@@ -69,7 +69,7 @@ All API endpoints require an API key. Get yours from the [Pikzels Dashboard](htt
 
 ## 🤖 Available Models
 
-Three AI models: **pkz-1** (gaming), **pkz-2** (realistic), **pkz-3** (advanced)
+Three AI models: **pkz-1** (gaming), **pkz-2** (realistic), **pkz-3** (latest)
 
 ## 💬 Community & Support
 
