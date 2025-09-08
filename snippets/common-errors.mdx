@@ -1,9 +1,21 @@
-| Status Code | Reason |
-|-------------|--------|
-| 400 | Bad Request — Invalid or missing fields |
-| 400 | Content Policy Violation — Request violates content policy |
-| 401 | Unauthorized — Invalid API Key |
-| 402 | Insufficient Balance — Not enough credits |
-| 429 | Rate Limited — Too many concurrent requests |
-| 500 | Internal Server Error — Server problem |
-| 503 | Service Unavailable — Under maintenance |
+All errors follow this JSON structure with a `code` field for programmatic handling:
+
+```json
+{
+  "error": {
+    "code": "ERROR_CODE_HERE",
+    "message": "Human readable message",
+    "details": "Additional context"
+  }
+}
+```
+
+| Status Code | Code | Description |
+|-------------|------|-------------|
+| 400 | `BAD_REQUEST` | Invalid or missing fields |
+| 400 | `CONTENT_POLICY_VIOLATION` | Request violates content policy |
+| 401 | `INVALID_AUTH_HEADER` | Invalid API Key |
+| 402 | `INSUFFICIENT_BALANCE` | Not enough credits |
+| 429 | `CONCURRENT_LIMIT_EXCEEDED` | Too many concurrent requests |
+| 500 | `INTERNAL_ERROR` | Server problem |
+| 503 | `MAINTENANCE_ACTIVE` | Under maintenance |

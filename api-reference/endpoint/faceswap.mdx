@@ -44,7 +44,7 @@ curl --location --request POST 'https://api.pikzels.com/v1/faceswap' \
 
 ### Endpoint-Specific Errors
 
-| Status Code | Reason |
-|-------------|--------|
-| 400 | Invalid Original Image — Target image is missing, corrupted, or contains no face |
-| 400 | Invalid Face Image — Source face image is missing, corrupted, or contains no face |
+| Status Code | Code | Description |
+|-------------|------|-------------|
+| 400 | `INVALID_ORIGINAL_IMAGE` | Target image is missing, corrupted, or contains no face |
+| 400 | `INVALID_FACE_IMAGE` | Source face image is missing, corrupted, or contains no face |
